@@ -42,12 +42,12 @@ export default function FrequentlyAskedQuestions() {
             className="p-4 cursor-pointer bg-gray-100 hover:bg-gray-200 rounded-t-lg flex justify-between items-center"
             onClick={() => setIsOpen2(!isOpen2)}
           >
-            <p className="text-lg sm:text-xl font-semibold text-gray-700">Is MT Auto Clicker Safe to Use?</p>
+            <p className="text-lg sm:text-xl font-semibold text-gray-700">Is MT Auto Clicker Safe to Use    ?</p>
             <span className="text-xl text-gray-500">{isOpen2 ? '-' : '+'}</span>
           </div>
           {isOpen2 && (
             <div className="p-4 bg-gray-50 rounded-b-lg">
-              <p className="text-gray-600"><span className="font-semibold text-gray-700">Ans.</span>  Yes, MT Auto Clicker is safe to use. It's developed with user security in mind, and its functionalities are designed to automate clicking tasks without posing any risks to your device or data.</p>
+              <p className="text-gray-600"><span className="font-semibold text-gray-700">Ans.</span>  Yes, MT Auto Clicker is safe to use. Its developed with user security in mind, and its functionalities are designed to automate clicking tasks without posing any risks to your device or data.</p>
             </div>
           )}
         </div>
