@@ -15,7 +15,7 @@ export default function Herosection() {
           MT Auto Clicker is your go-to tool for automating repetitive tasks on your computer or mobile devices. With features like auto-clicking, scrolling, swiping, and form-filling, this software is designed to make your life easier.
           <br />
           <br />
-          Whether you need to click multiple times, navigate through content effortlessly, or streamline your data entry, this Auto Clicker is there for you. It's the perfect companion for anyone looking to boost their productivity and save time in their daily digital activities.
+          Whether you need to click multiple times, navigate through content effortlessly, or streamline your data entry, this Auto Clicker is there for you. Its the perfect companion for anyone looking to boost their productivity and save time in their daily digital activities.
         </p>
   
         
