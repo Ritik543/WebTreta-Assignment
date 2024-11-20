@@ -1,4 +1,6 @@
 import React from "react";
+import logo from "../../../public/logo.png";
+import Image from "next/image";
 
 function Footer() {
   return (
@@ -7,7 +9,7 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           
           <div className="text-center sm:text-left">
-            <img src="/logo.png" alt="MT Auto Clicker" className="h-12 mb-4 mx-auto sm:mx-0" />
+            <Image src={logo} alt="MT Auto Clicker" className="h-12 mb-4 mx-auto sm:mx-0" />
             <p className="text-sm text-gray-400 leading-relaxed">
               MT Auto Clicker automates repetitive tasks like clicks, scrolls, and data entry across apps and websites,
               with customizable, recordable automations to enhance productivity.
