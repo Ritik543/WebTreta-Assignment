@@ -1,4 +1,4 @@
-import { MdFlashOn } from "react-icons/md"; // Make sure you import the icon
+import { MdFlashOn } from "react-icons/md"; 
 
 export default function Workingautoclick() {
   return (
@@ -16,7 +16,7 @@ export default function Workingautoclick() {
 
         <div className="flex items-center mb-4 w-full mx-auto">
           <p className="text-[1rem] text-gray-700">
-            MT Auto Clicker makes automating repetitive tasks simple through customizable feature sets. Here's a quick rundown:
+            MT Auto Clicker makes automating repetitive tasks simple through customizable feature sets. Here a quick rundown:
           </p>
         </div>
 
