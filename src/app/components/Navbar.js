@@ -1,18 +1,29 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
-export default function Navbar() {
+export default function Navbar({ onDarkModeToggle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleDarkModeToggle = () => {
+    const newDarkModeState = !isDarkMode;
+    setIsDarkMode(newDarkModeState);
+    // Notify parent component about dark mode state
+    if (onDarkModeToggle) {
+      onDarkModeToggle(newDarkModeState);
+    }
+  };
+
   return (
     <header className="bg-[#1c2b71] text-white h-[90px]">
       <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+        {/* Logo Section */}
         <div className="flex items-center space-x-3">
           <Image
             src={logo}
@@ -22,48 +33,83 @@ export default function Navbar() {
           />
         </div>
 
-        <button
-          className="sm:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-300"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+        {/* Mobile Icons: Moon and Hamburger */}
+        <div className="flex sm:hidden items-center space-x-3">
+          {/* Moon Icon */}
+          <button
+            onClick={handleDarkModeToggle}
+            className="p-2 bg-transparent hover:text-cyan-500 transition"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              stroke="none"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+            </svg>
+          </button>
 
+          {/* Hamburger Menu */}
+          <button
+            onClick={toggleMenu}
+            className="p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Navigation Menu */}
         <nav
-          className={`absolute sm:static top-[90px] left-0 sm:flex items-center space-x-8 bg-white sm:bg-transparent w-full sm:w-auto transition-all shadow-lg sm:shadow-none ${
+          className={`absolute sm:static top-[90px] left-0 sm:flex items-center bg-white sm:bg-transparent w-full sm:w-auto transition-all shadow-lg sm:shadow-none ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
-          <ul className="flex flex-col sm:flex-row sm:space-x-8 space-y-4 sm:space-y-0 p-4 sm:p-0">
+          <ul className="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-4 sm:space-y-0 p-4 sm:p-0">
             <li>
               <a
                 href="#"
-                className="hover:text-cyan-500 transition text-md font-semibold text-black sm:text-white"
+                className="text-black sm:text-white text-md font-semibold hover:text-cyan-500 transition"
               >
                 Home
               </a>
             </li>
-            <li>
+            <li className="flex items-center space-x-2">
               <a
                 href="#"
-                className="hover:text-cyan-500 transition text-md font-semibold text-black sm:text-white"
+                className="text-black sm:text-white text-md font-semibold hover:text-cyan-500 transition"
               >
                 Download
               </a>
+              {/* Moon Icon */}
+              <button
+                onClick={handleDarkModeToggle}
+                className="p-2 bg-transparent hover:text-cyan-500 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke="none"
+                >
+                  <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                </svg>
+              </button>
             </li>
           </ul>
         </nav>
