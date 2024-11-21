@@ -1,140 +1,66 @@
-import { useState } from "react";
-import Link from "next/link";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/imaa.png";
 import Image from "next/image";
 
-export default function Navbar({ isDarkMode, onDarkModeToggle }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
+export default function Header({ isDarkMode }) {
   return (
-    <nav
+    <div
       className={`${
-        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      } shadow-lg fixed w-full z-10 transition-all duration-300`}
+        isDarkMode
+          ? "bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white"
+          : "bg-gradient-to-r from-gray-100 to-gray-200 text-black"
+      } py-20 md:py-28 text-center transition-all duration-500`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div
-          className={`flex items-center space-x-3 px-2 py-1 rounded-lg ${
-            isDarkMode
-              ? "bg-gray-800"
-              : "bg-black" // Light mode gradient
-          }`}
+      <h1
+        className={`${
+          isDarkMode ? "text-white" : "text-black"
+        } text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold transition-all duration-500 transform hover:scale-105 typewriter-effect`}
+      >
+        MT Auto Clicker
+      </h1>
+
+      <main className="max-w-4xl mx-auto text-center mt-8 relative px-4 sm:px-8">
+        <span
+          className={`absolute sm:top-16 left-1/2 transform -translate-x-1/2 ${
+            isDarkMode ? "bg-gray-600 text-gray-100" : "bg-gray-200 text-gray-700"
+          } text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wider hidden sm:block animate-bounce`}
         >
-          <Image
-            src={logo}
-            alt="Logo"
-            width={176}
-            height={25}
-            className="object-contain"
-          />
-        </div>
+          Advertisement
+        </span>
 
-        {/* Links for larger screens */}
-        <ul className="hidden md:flex items-center space-x-8">
-          <li>
-            <Link href="#">
-              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
-                Home
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
-                Features
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
-                About
-              </span>
-            </Link>
-          </li>
-        </ul>
-
-        {/* Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
-          {/* Dark Mode Button */}
-          <button
-            onClick={onDarkModeToggle}
-            className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-teal-400 via-blue-400 to-indigo-500 text-white transition-all duration-300 hover:scale-105"
-          >
-            <span className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
-            {isDarkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-
-          {/* Download Button */}
-          <button
-            className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-400 to-orange-500 text-white transition-all duration-300 hover:scale-105"
-            onClick={() => alert("Download Started!")}
-          >
-            <span className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
-            Download
-          </button>
-        </div>
-
-        {/* Hamburger Menu for Mobile */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-2xl focus:outline-none hover:scale-110 transition-transform duration-300"
-        >
-          ☰
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div
+        <p
           className={`${
-            isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-          } md:hidden transition-all duration-300`}
+            isDarkMode ? "text-gray-300" : "text-gray-800"
+          } text-base md:text-lg leading-relaxed mt-8 transition-all duration-500`}
         >
-          <ul className="space-y-4 px-4 py-4">
-            <li>
-              <Link href="#">
-                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
-                  Home
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
-                  Features
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
-                  About
-                </span>
-              </Link>
-            </li>
-            <li>
-              <button
-                onClick={onDarkModeToggle}
-                className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300 w-full"
-              >
-                {isDarkMode ? "Light Mode" : "Dark Mode"}
-              </button>
-            </li>
-            <li>
-              <button
-                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full"
-                onClick={() => alert("Download Started!")}
-              >
-                Download
-              </button>
-            </li>
-          </ul>
+          Streamline tasks with features like auto-clicking, scrolling,
+          swiping, form-filling, hotkeys, zoom, screen capture, and more. Easily
+          enhance efficiency and productivity.
+        </p>
+
+        <div className="relative mt-12 mx-auto flex flex-col items-center">
+          <div className="transition-transform duration-500 hover:scale-110">
+            <Image
+              src={logo}
+              alt="MT Auto Clicker Logo"
+              className="transition-all duration-500 hover:rotate-[15deg]"
+            />
+          </div>
+          <button className="relative px-8 py-3 font-semibold text-white bg-blue-600 rounded-lg overflow-hidden group">
+    {/* Gradient background on hover */}
+    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500 to-teal-400 opacity-30 group-hover:opacity-100 transition duration-1000 ease-in-out"></span>
+    
+    {/* Text stays visible and changes color on hover */}
+    <span className="relative z-10 group-hover:text-white text-lg font-semibold transition-all duration-300 ease-out">
+      Download
+    </span>
+    
+    {/* Left-to-right color transition animation */}
+    <span className="absolute left-0 top-0 w-0 h-full bg-gradient-to-r from-pink-500 to-purple-600 group-hover:w-full transition-all duration-1000 ease-out"></span>
+  </button>
+
+         
         </div>
-      )}
-    </nav>
+      </main>
+    </div>
   );
 }
