@@ -14,7 +14,7 @@ export default function Navbar({ onDarkModeToggle }) {
   const handleDarkModeToggle = () => {
     const newDarkModeState = !isDarkMode;
     setIsDarkMode(newDarkModeState);
-    // Notify parent component about dark mode state
+
     if (onDarkModeToggle) {
       onDarkModeToggle(newDarkModeState);
     }
@@ -23,7 +23,7 @@ export default function Navbar({ onDarkModeToggle }) {
   return (
     <header className="bg-[#1c2b71] text-white h-[90px]">
       <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo Section */}
+        
         <div className="flex items-center space-x-3">
           <Image
             src={logo}
@@ -33,12 +33,11 @@ export default function Navbar({ onDarkModeToggle }) {
           />
         </div>
 
-        {/* Mobile Icons: Moon and Hamburger */}
         <div className="flex sm:hidden items-center space-x-3">
-          {/* Moon Icon */}
+          
           <button
             onClick={handleDarkModeToggle}
-            className="p-2 bg-transparent hover:text-cyan-500 transition"
+            className="p-2 bg-transparent hover:text-cyan-500 transition sm:hidden"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +50,7 @@ export default function Navbar({ onDarkModeToggle }) {
             </svg>
           </button>
 
-          {/* Hamburger Menu */}
+          
           <button
             onClick={toggleMenu}
             className="p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition"
@@ -73,7 +72,7 @@ export default function Navbar({ onDarkModeToggle }) {
           </button>
         </div>
 
-        {/* Navigation Menu */}
+        
         <nav
           className={`absolute sm:static top-[90px] left-0 sm:flex items-center bg-white sm:bg-transparent w-full sm:w-auto transition-all shadow-lg sm:shadow-none ${
             isMenuOpen ? "block" : "hidden"
@@ -95,10 +94,11 @@ export default function Navbar({ onDarkModeToggle }) {
               >
                 Download
               </a>
-              {/* Moon Icon */}
+
+              
               <button
                 onClick={handleDarkModeToggle}
-                className="p-2 bg-transparent hover:text-cyan-500 transition"
+                className="p-2 bg-transparent hover:text-cyan-500 transition hidden sm:block"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
