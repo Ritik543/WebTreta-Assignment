@@ -5,7 +5,7 @@ export default function Workingautoclick({ isDarkMode }) {
     <>
       <div className="p-10">
         <h2
-          className={`text-3xl font-semibold mx-auto text-center mb-3 ${
+          className={`text-3xl font-semibold mx-auto text-center mb-3 transform transition-all duration-500 ${
             isDarkMode ? "text-white" : "text-black"
           }`}
         >
@@ -13,7 +13,7 @@ export default function Workingautoclick({ isDarkMode }) {
         </h2>
 
         <hr
-          className={`my-4 border-t-2 border-gray-300 ${
+          className={`my-4 border-t-2 border-gray-300 transition-all duration-500 ${
             isDarkMode ? "border-blue-600" : "border-gray-300"
           } w-[88%] mx-auto`}
         />
@@ -22,16 +22,15 @@ export default function Workingautoclick({ isDarkMode }) {
       <div className="space-y-8 w-full md:mx-16 mx-auto px-4 lg:px-10">
         <div className="flex items-center mb-4 w-full mx-auto">
           <p
-            className={`text-[1rem] ${
+            className={`text-[1rem] transition-all duration-500 ${
               isDarkMode ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            MT Auto Clicker makes automating repetitive tasks simple through customizable feature sets. Here a quick rundown:
+            MT Auto Clicker makes automating repetitive tasks simple through customizable feature sets. Here's a quick rundown:
           </p>
         </div>
 
-        {[
-          {
+        {[{
             title: "Define Automation Workflows",
             description:
               "Easily record multi-step automation sequences with varying actions, data entry, zooming, etc.",
@@ -69,12 +68,15 @@ export default function Workingautoclick({ isDarkMode }) {
         ].map(({ title, description }, index) => (
           <div
             key={index}
-            className="flex items-center space-x-2 w-full mx-auto flex-wrap lg:flex-nowrap"
+            className="flex items-center space-x-2 w-full mx-auto flex-wrap lg:flex-nowrap hover:scale-105 transition-all duration-500"
           >
             <div className="flex items-center space-x-2">
-              <MdFlashOn size={24} className="text-yellow-500" />
+              <MdFlashOn
+                size={28}
+                className="text-yellow-500 transform transition-all duration-300 hover:rotate-12"
+              />
               <h3
-                className={`text-lg font-semibold mt-1 ${
+                className={`text-lg font-semibold mt-1 transition-all duration-500 ${
                   isDarkMode ? "text-white" : "text-black"
                 } text-sm sm:text-base lg:text-lg`}
               >
@@ -82,7 +84,7 @@ export default function Workingautoclick({ isDarkMode }) {
               </h3>
             </div>
             <p
-              className={`text-[1rem] w-full lg:w-1/2 mt-1 ${
+              className={`text-[1rem] w-full lg:w-1/2 mt-1 transition-all duration-500 ${
                 isDarkMode ? "text-gray-400" : "text-gray-600"
               }`}
             >
@@ -93,7 +95,7 @@ export default function Workingautoclick({ isDarkMode }) {
 
         <div className="flex items-center mt-4 w-full mx-auto">
           <p
-            className={`text-[1rem] ${
+            className={`text-[1rem] transition-all duration-500 ${
               isDarkMode ? "text-gray-300" : "text-gray-700"
             }`}
           >
