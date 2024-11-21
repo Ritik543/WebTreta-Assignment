@@ -1,17 +1,27 @@
-// ExampleComponent.js
-export default function Differentnformation() {
+
+export default function Differentnformation({ isDarkMode }) {
     return (
       <div className="p-6 sm:p-10">
-        {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-semibold mx-auto text-center text-gray-800 dark:to- mb-6">
+        
+        <h2
+          className={`text-3xl sm:text-4xl font-semibold mx-auto text-center ${
+            isDarkMode ? "text-white" : "text-gray-800"
+          } mb-6`}
+        >
           What makes MT Auto Clicker Different?
         </h2>
   
-        {/* First Horizontal Line with limited width */}
-        <hr className="my-4 border-t-2 border-gray-300 dark:border-blue-600 w-[88%] mx-auto" />
-  
-        {/* Information */}
-        <p className="text-sm sm:text-md text-gray-600 p-6 sm:p-12 sm:w-[88%] mx-auto">
+        <hr
+          className={`my-4 border-t-2 border-gray-300 ${
+            isDarkMode ? "border-blue-600" : "border-gray-300"
+          } w-[88%] mx-auto`}
+        />
+
+        <p
+          className={`text-sm sm:text-md ${
+            isDarkMode ? "text-gray-300" : "text-gray-600"
+          } p-6 sm:p-12 sm:w-[88%] mx-auto`}
+        >
           Lightweight software enhances productivity without overloading devices with unnecessary strain for smooth overall performance.
           <br />
           <br />
@@ -22,9 +32,11 @@ export default function Differentnformation() {
           Experience the difference with a tool that streamlines processes, enhances efficiency, and minimizes manual effort with multiple features. These features set it apart as the go-to choice for those seeking a seamless, hassle-free, automated task experience.
         </p>
   
-        {/* Horizontal Line */}
-        <hr className="my-4 border-t-2 border-gray-300 dark:border-blue-600 w-[88%] mx-auto" />
+        <hr
+          className={`my-4 border-t-2 border-gray-300 ${
+            isDarkMode ? "border-blue-600" : "border-gray-300"
+          } w-[88%] mx-auto`}
+        />
       </div>
     );
-  }
-  
+}
