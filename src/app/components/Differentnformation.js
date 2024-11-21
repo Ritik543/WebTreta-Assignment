@@ -40,3 +40,4 @@ export default function Differentnformation({ isDarkMode }) {
       </div>
     );
 }
+
