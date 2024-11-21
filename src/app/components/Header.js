@@ -18,11 +18,11 @@ export default function Header({ isDarkMode }) {
 
       <main className="max-w-4xl mx-auto text-center mt-8 relative px-4 sm:px-8">
         <span
-          className={`absolute    sm:top-16 left-1/2 transform -translate-x-1/2 ${
+          className={`absolute sm:top-16 left-1/2 transform -translate-x-1/2 ${
             isDarkMode
               ? "bg-gray-700 text-gray-300"
               : "bg-gray-300 text-gray-600"
-          }  text-xs px-3 py-1 rounded-full uppercase`}
+          } text-xs px-3 py-1 rounded-full uppercase hidden sm:block`} 
         >
           Advertisement
         </span>
