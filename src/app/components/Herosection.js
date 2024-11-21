@@ -32,7 +32,7 @@ export default function Herosection({ isDarkMode }) {
           <br />
           Whether you need to click multiple times, navigate through content
           effortlessly, or streamline your data entry, this Auto Clicker is there
-          for you. It's the perfect companion for anyone looking to boost their
+          for you. Its the perfect companion for anyone looking to boost their
           productivity and save time in their daily digital activities.
         </p>
       </div>
