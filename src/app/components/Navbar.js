@@ -1,119 +1,140 @@
-"use client";
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import logo from "../../../public/logo.png";
+import Image from "next/image";
 
-export default function Navbar({ onDarkModeToggle }) {
+export default function Navbar({ isDarkMode, onDarkModeToggle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleDarkModeToggle = () => {
-    const newDarkModeState = !isDarkMode;
-    setIsDarkMode(newDarkModeState);
-
-    if (onDarkModeToggle) {
-      onDarkModeToggle(newDarkModeState);
-    }
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="bg-[#1c2b71] text-white h-[90px]">
-      <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
-        
-        <div className="flex items-center space-x-3">
+    <nav
+      className={`${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      } shadow-lg fixed w-full z-10 transition-all duration-300`}
+    >
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <div
+          className={`flex items-center space-x-3 px-2 py-1 rounded-lg ${
+            isDarkMode
+              ? "bg-gray-800"
+              : "bg-black" // Light mode gradient
+          }`}
+        >
           <Image
             src={logo}
-            alt="MT Auto Clicker Logo"
+            alt="Logo"
             width={176}
             height={25}
+            className="object-contain"
           />
         </div>
 
-        <div className="flex sm:hidden items-center space-x-3">
-          
+        {/* Links for larger screens */}
+        <ul className="hidden md:flex items-center space-x-8">
+          <li>
+            <Link href="#">
+              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
+                Home
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
+                Features
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <span className="cursor-pointer hover:text-indigo-500 transition duration-300 hover:scale-110">
+                About
+              </span>
+            </Link>
+          </li>
+        </ul>
+
+        {/* Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
+          {/* Dark Mode Button */}
           <button
-            onClick={handleDarkModeToggle}
-            className="p-2 bg-transparent hover:text-cyan-500 transition sm:hidden"
+            onClick={onDarkModeToggle}
+            className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-teal-400 via-blue-400 to-indigo-500 text-white transition-all duration-300 hover:scale-105"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-white"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              stroke="none"
-            >
-              <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-            </svg>
+            <span className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
           </button>
 
-          
+          {/* Download Button */}
           <button
-            onClick={toggleMenu}
-            className="p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition"
+            className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-400 to-orange-500 text-white transition-all duration-300 hover:scale-105"
+            onClick={() => alert("Download Started!")}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <span className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+            Download
           </button>
         </div>
 
-        
-        <nav
-          className={`absolute sm:static top-[90px] left-0 sm:flex items-center bg-white sm:bg-transparent w-full sm:w-auto transition-all shadow-lg sm:shadow-none ${
-            isMenuOpen ? "block" : "hidden"
-          }`}
+        {/* Hamburger Menu for Mobile */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden text-2xl focus:outline-none hover:scale-110 transition-transform duration-300"
         >
-          <ul className="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-4 sm:space-y-0 p-4 sm:p-0">
+          ☰
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div
+          className={`${
+            isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+          } md:hidden transition-all duration-300`}
+        >
+          <ul className="space-y-4 px-4 py-4">
             <li>
-              <a
-                href="#"
-                className="text-black sm:text-white text-md font-semibold hover:text-cyan-500 transition"
-              >
-                Home
-              </a>
+              <Link href="#">
+                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
+                  Home
+                </span>
+              </Link>
             </li>
-            <li className="flex items-center space-x-2">
-              <a
-                href="#"
-                className="text-black sm:text-white text-md font-semibold hover:text-cyan-500 transition"
+            <li>
+              <Link href="#">
+                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
+                  Features
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <span className="cursor-pointer hover:text-indigo-500 transition duration-300">
+                  About
+                </span>
+              </Link>
+            </li>
+            <li>
+              <button
+                onClick={onDarkModeToggle}
+                className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300 w-full"
+              >
+                {isDarkMode ? "Light Mode" : "Dark Mode"}
+              </button>
+            </li>
+            <li>
+              <button
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full"
+                onClick={() => alert("Download Started!")}
               >
                 Download
-              </a>
-
-              
-              <button
-                onClick={handleDarkModeToggle}
-                className="p-2 bg-transparent hover:text-cyan-500 transition hidden sm:block"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke="none"
-                >
-                  <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                </svg>
               </button>
             </li>
           </ul>
-        </nav>
-      </div>
-    </header>
+        </div>
+      )}
+    </nav>
   );
 }
